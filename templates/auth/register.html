@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-sm-6">
+<form action="/register" method="POST">
+    <label>Login</label><input type="text" name="login" value="" class="form-control"><br>
+    <label>Password</label><input type="password" name="password" value="" class="form-control"><br>
+    <label>Retype password</label><input type="password" name="retype_pass" value="" class="form-control"><br>
+    {% if form_error %}
+	<div class="alert alert-danger">
+	{% for i in form_error %}
+	    <li>{{i}}</li>
+	{% endfor %}
+	</div>
+    {% endif %}
+
+    <input type="submit" value="OK" class="btn btn-outline-success">
+</form>
+</div>
+{% endblock %}

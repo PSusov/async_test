@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-sm-6 col-xs-4">
+    <div class="alert alert-danger">
+	<b>Error:</b> {{error}}
+	<hr>
+	<a href="javascript:history.back()">Назад</a>
+    </div>
+</div>
+
+{% endblock %}

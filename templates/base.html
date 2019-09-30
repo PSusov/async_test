@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ static('bootstrap.min.css') }}">
+    <title>{% block title %} Default {% endblock %}</title>
+</head>
+<body>
+    <center>
+	<div class="btn-group mt-2" role="group">
+	    <a href="/main" class="btn btn-secondary">Home</a>
+	    {% block nav %}
+	    {% endblock %}
+	</div>
+    </center>
+
+    <div class="col-sm-10 col-xl-6 mr-auto ml-auto" style="margin-top: 60px;">
+    {% block content %}
+
+    {% endblock %}
+    </div>
+</body>
+</html>

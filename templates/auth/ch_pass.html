@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-sm-6">
+<form action="/ch_pass" method="POST">
+<label>Old password</label>
+<input type="password" name="password" value="" class="form-control"><br>
+<label>New password</label>
+<input type="password" name="new_password" value="" class="form-control"><br>
+<label>Retype new password</label>
+<input type="password" name="retype_pass" value="" class="form-control"><br>
+
+{% if form_error %}
+<div class="alert alert-danger">
+{% for i in form_error %}
+    <li>{{i}}</li>
+{% endfor %}
+</div>
+{% endif %}
+
+<input type="submit" value="OK" class="btn btn-outline-success">
+</form>
+<br>
+
+{% if result %}
+<div class="alert alert-success">{{result}}</div>
+{% endif %}
+
+</div>
+
+{% endblock %}
