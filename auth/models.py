@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 
 import aiopg
+import hashlib
 from settings import PGCONF
 
 class User():
 
     def __init__(self,data,**kw):
         self.login = data.get('login')
-        self.password = data.get('password')
+        if data.get('password'):
+            self.password = hashlib.md5(data.get('password').encode()).hexdigest()
         self.id = data.get('id')
 
     async def get_user_id(self):
@@ -67,6 +69,7 @@ class User():
 
 
     async def change_password(self,new_password):
+        new_password = hashlib.md5(new_password.encode()).hexdigest()
         async with aiopg.connect(PGCONF) as conn:
             cur = await conn.cursor()
             try:
