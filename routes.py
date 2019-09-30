@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from auth.views import Login,Register,SignOff,ChangePass,DeleteUser
-from main.views import Main
+from main.views import Main,LinkAdd
 
 
 routes = [

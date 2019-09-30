@@ -21,18 +21,16 @@ class Link():
                  return False
 
     async def add_link(self):
-        if not check_link(self):
+        if not await self.check_link():
             async with aiopg.connect(PGCONF) as conn:
                 cur = await conn.cursor()
                 try:
                     await cur.execute(f"INSERT INTO links (user_id,link) VALUES ('{self.user_id}','{self.link}')")
-                    result = "Link added successfully"
+                    return True
                 except Exception as err:
-                    print(err)
-                    result = "Error adding link: "+err
+                    return f"Error adding link: {err}"
         else:
-            result = "Link exists"
-        return result
+            return "Link exists"
 
     async def link_list(self):
         async with aiopg.connect(PGCONF) as conn:
